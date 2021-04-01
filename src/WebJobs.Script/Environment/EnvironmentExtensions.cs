@@ -459,5 +459,11 @@ namespace Microsoft.Azure.WebJobs.Script
                     return CloudConstants.AzureStorageSuffix;
             }
         }
+
+        public static bool IsDrainOnApplicationStopping(this IEnvironment environment)
+        {
+            return !string.IsNullOrEmpty(environment.GetEnvironmentVariable(KubernetesServiceHost)) ||
+                (bool.TryParse(environment.GetEnvironmentVariable(DrainOnApplicationStopping), out bool v) && v);
+        }
     }
 }
