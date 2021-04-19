@@ -39,7 +39,7 @@ namespace Microsoft.Azure.WebJobs.Script.Tests.EndToEnd
             request = new HttpRequestMessage(HttpMethod.Get, uri);
             response = await fixture.Host.HttpClient.SendAsync(request);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.Equal("text/plain", response.Content.Headers.ContentType.MediaType);
+            Assert.Equal("application/json", response.Content.Headers.ContentType.MediaType);
             Assert.Equal("Hello Mathew", body);
         }
 
